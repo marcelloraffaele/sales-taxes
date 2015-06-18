@@ -1,6 +1,5 @@
 package com.rmarcello.salestaxes;
 
-import com.rmarcello.salestaxes.beans.Receipt;
 import com.rmarcello.salestaxes.beans.ReceiptItem;
 import com.rmarcello.salestaxes.beans.ReceiptTotalResult;
 import com.rmarcello.salestaxes.beans.goods.Good;

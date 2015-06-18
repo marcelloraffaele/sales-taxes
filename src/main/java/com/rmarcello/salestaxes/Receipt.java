@@ -1,5 +1,7 @@
-package com.rmarcello.salestaxes.beans;
+package com.rmarcello.salestaxes;
 
+import com.rmarcello.salestaxes.beans.ReceiptItem;
+import com.rmarcello.salestaxes.beans.ReceiptTotalResult;
 import java.util.LinkedList;
 import java.util.List;
 
