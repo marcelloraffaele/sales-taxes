@@ -25,8 +25,23 @@ public class GoodTaxesTest extends TestCase {
         assertEquals(g1.calculatePrice(), 54.65f);
     }
     
+    public void testPriceImportedGoodProduct2() {
+        ImportedGood g1 = new ImportedGood("bottle of parfume", 27.99f);
+        assertEquals(g1.calculatePrice(), 32.19f);
+    }
+    
     public void testPriceImportedNotTaxedGoodProduct() {
         ImportedNotTaxedGood g1 = new ImportedNotTaxedGood("box of chocolate", 10.00f);
         assertEquals(g1.calculatePrice(), 10.50f);
+    }
+    
+    public void testPriceTaxedGoodProduct2() {
+        Good g1 = new Good("bottle of porfume", 18.99f );
+        assertEquals(g1.calculatePrice(), 10.50f);
+    }
+    
+    public void testPriceImportedNotTaxedGoodProduct2() {
+        ImportedNotTaxedGood g1 = new ImportedNotTaxedGood("box of chocolate", 11.25f);
+        assertEquals(g1.calculatePrice(), 11.85f);
     }
 }

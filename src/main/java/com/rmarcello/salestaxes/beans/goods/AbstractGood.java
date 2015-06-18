@@ -24,7 +24,7 @@ public abstract class AbstractGood {
         float tax = 0;
         if(this.taxRate!=0)
             tax = (this.price*this.taxRate)/100;
-        System.out.println("p="+ (tax+this.price));
+//        System.out.println("p="+ (tax+this.price));
         return round(this.price+tax);
     }
     
@@ -36,7 +36,7 @@ public abstract class AbstractGood {
     }
 
     private float round(float f) {
-        float r = (float) Math.round(f * 1000) / 1000;
+        float r = (float) Math.round(f * 100) / 100;
         return r;
     }
 
