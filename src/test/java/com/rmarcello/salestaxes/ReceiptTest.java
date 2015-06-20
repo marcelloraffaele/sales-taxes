@@ -48,9 +48,20 @@ public class ReceiptTest extends TestCase {
         r.addItem( new ReceiptItem( 1, new NotTaxedGood("packet of headache pills", 9.75f) ) );
         r.addItem( new ReceiptItem( 1, new ImportedNotTaxedGood("box of imported chocolate", 11.25f) ) );
         
+        System.out.println( r );
+        
         ReceiptTotalResult res = r.getResult();
-        assertEquals(res.getSalesTaxes(), 7.65f);
-        assertEquals(res.getTotal(), 65.15f);
+        assertEquals( 6.70f, res.getSalesTaxes());
+        assertEquals( 74.68f, res.getTotal()); 
+        
+        
     }
-    
+//    public void testReceiptaasadasd() {
+//    float f= 11.812f;
+//        System.out.println(""+Math.floor(f * 20.0f));
+//        System.out.println(""+Math.ceil(f * 20.0f));
+//        System.out.println(""+Math.round(f * 20.0f));
+//        float r = (float) Math.ceil(f * 20.0f) / 20.0f;
+//        System.out.println(""+r);
+//    }
 }

@@ -23,7 +23,14 @@ public class Receipt {
 
     @Override
     public String toString() {
-        return "Receipt{" + "list=" + list + '}';
+        String s="";
+        for( ReceiptItem i: list) {
+            s+= i.getQuantity()+" "+ i.getGood().getName() + ": "+ i.getGood().calculatePrice()+"\n";
+        }
+        ReceiptTotalResult r = this.getResult();
+        s+= "Sales Taxes: " + r.getSalesTaxes() +"\n";
+        s+= "Total: " + r.getTotal() ;
+        return s;
     }
 
     public ReceiptTotalResult getResult() {

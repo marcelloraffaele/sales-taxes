@@ -18,14 +18,24 @@ public abstract class AbstractGood {
         this.taxRate=taxRate;
         
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+    
+    
     
     
     public float calculatePrice() {
         float tax = 0;
         if(this.taxRate!=0)
             tax = (this.price*this.taxRate)/100;
-//        System.out.println("p="+ (tax+this.price));
-        return round(this.price+tax);
+        
+        return this.price + round(tax);
     }
     
     public float calculateTax() {
@@ -36,7 +46,9 @@ public abstract class AbstractGood {
     }
 
     private float round(float f) {
-        float r = (float) Math.round(f * 100) / 100;
+//        float r = (float) Math.round(f * 100) / 100;
+        //float r = (float) Math.round(f * 20.0f) / 20.0f;
+        float r = (float) Math.ceil(f * 20.0f) / 20.0f;
         return r;
     }
 
