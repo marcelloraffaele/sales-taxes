@@ -6,43 +6,46 @@ import com.rmarcello.salestaxes.beans.goods.Good;
 import com.rmarcello.salestaxes.beans.goods.ImportedGood;
 import com.rmarcello.salestaxes.beans.goods.ImportedNotTaxedGood;
 import com.rmarcello.salestaxes.beans.goods.NotTaxedGood;
-import static junit.framework.Assert.assertEquals;
-import junit.framework.TestCase;
+import com.rmarcello.salestaxes.logics.Nearest5CentRoundStrategy;
+import com.rmarcello.salestaxes.logics.RoundStrategy;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
-public class ReceiptTest extends TestCase {
+public class ReceiptTest{
 
-
+    @Test
     public void testReceipt1() {
-        
-        Receipt r = new Receipt();
+        RoundStrategy s = new Nearest5CentRoundStrategy();
+        Receipt r = new Receipt( s );
         r.addItem( new ReceiptItem( 1, new NotTaxedGood("book", 12.49f) ) );
         r.addItem( new ReceiptItem( 1, new Good("music CD", 14.99f) ) );
         r.addItem( new ReceiptItem( 1, new NotTaxedGood("chocolate bar", 0.85f) ) );
         
-//        System.out.println("r:"+r);
+        System.out.println( r );
         
         ReceiptTotalResult res = r.getResult();
-        
-//        System.out.println("res:"+res);
-        
-        assertEquals(res.getSalesTaxes(), 1.50f);
-        assertEquals(res.getTotal(), 29.83f);
+        assertEquals( 1.50f,res.getSalesTaxes(),  0f);
+        assertEquals( 29.83f, res.getTotal(), 0f);
     }
     
+    @Test
     public void testReceipt2() {
-        
-        Receipt r = new Receipt();
+        RoundStrategy s = new Nearest5CentRoundStrategy();
+        Receipt r = new Receipt( s );
         r.addItem( new ReceiptItem( 1, new ImportedNotTaxedGood("imported box of chocolate", 10.00f) ) );
         r.addItem( new ReceiptItem( 1, new ImportedGood("imported bottle of porfume", 47.50f) ) );
         
+        System.out.println( r );
+        
         ReceiptTotalResult res = r.getResult();
-        assertEquals(res.getSalesTaxes(), 7.65f);
-        assertEquals(res.getTotal(), 65.15f);
+        assertEquals( 7.65f, res.getSalesTaxes(),0f);
+        assertEquals( 65.15f,res.getTotal(), 0f);
     }
     
+    @Test
     public void testReceipt3() {
-        
-        Receipt r = new Receipt();
+        RoundStrategy s = new Nearest5CentRoundStrategy();
+        Receipt r = new Receipt( s );
         r.addItem( new ReceiptItem( 1, new ImportedGood("imported bottle of porfume", 27.99f) ) );
         r.addItem( new ReceiptItem( 1, new Good("bottle of porfume", 18.99f) ) );
         r.addItem( new ReceiptItem( 1, new NotTaxedGood("packet of headache pills", 9.75f) ) );
@@ -51,17 +54,10 @@ public class ReceiptTest extends TestCase {
         System.out.println( r );
         
         ReceiptTotalResult res = r.getResult();
-        assertEquals( 6.70f, res.getSalesTaxes());
-        assertEquals( 74.68f, res.getTotal()); 
+        assertEquals( 6.70f, res.getSalesTaxes(), 0f);
+        assertEquals( 74.68f, res.getTotal(), 0f); 
         
         
     }
-//    public void testReceiptaasadasd() {
-//    float f= 11.812f;
-//        System.out.println(""+Math.floor(f * 20.0f));
-//        System.out.println(""+Math.ceil(f * 20.0f));
-//        System.out.println(""+Math.round(f * 20.0f));
-//        float r = (float) Math.ceil(f * 20.0f) / 20.0f;
-//        System.out.println(""+r);
-//    }
+
 }
